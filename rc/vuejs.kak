@@ -45,10 +45,14 @@ add-highlighter shared/vuejs/template_vue region '^<template\b' '^</template>$' 
 add-highlighter shared/vuejs/template_pug region '^<template\b.+?\blang="pug"' '^</template>$' ref pug
 
 add-highlighter shared/vuejs/script_javascript region '^<script\b' '^</script>$' ref javascript
-add-highlighter shared/vuejs/script_typescript region '^<script\b.+?\blang="ts">$' '^</script>$' ref typescript
+# add-highlighter shared/vuejs/script_typescript region '^<script\b.+?\blang="ts">$' '^</script>$' ref typescript
 
 add-highlighter shared/vuejs/style_css region '^<style\b' '^</style>$' ref css
 add-highlighter shared/vuejs/style_scss region '^<style\b.+?\blang="scss"' '^</style>$' ref scss
 add-highlighter shared/vuejs/style_stylus region '^<style\b.+?\blang="stylus"' '^</style>$' ref css
+
+add-highlighter shared/vuejs/typescript region -match-capture '^(\h*)<script\b.+?\blang="ts">' '^(\h*)</script>' regions
+add-highlighter shared/vuejs/typescript/ default-region fill meta
+add-highlighter shared/vuejs/typescript/inner region '\A<script\b.+?\blang="ts">[^\n]*\K' '(?=</script>)' ref typescript
 
 }
